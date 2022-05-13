@@ -1,14 +1,26 @@
-import { Header } from "./components/Header";
-import { InfoBlock } from "./components/InfoBlock";
-import { StyledCalendar } from "./components/StyledCalendar";
+import { useState } from "react";
+import { Header } from "./components/MainPage/Header";
+import { InfoBlock } from "./components/MainPage/InfoBlock";
+import { StyledCalendar } from "./components/MainPage/StyledCalendar";
+import { MoviesPage } from "./components/Movies/MoviesPage";
 
 function App() {
+  const [selectedDate, setSelectedDate] = useState<Date>();
+
+  const onBack = () => setSelectedDate(undefined);
+
   return (
     <div className="w-screen min-h-screen text-center bg-main">
-      <Header />
+      <Header hasBackButton={Boolean(selectedDate)} onBack={onBack} />
       <main>
-        <InfoBlock />
-        <StyledCalendar />
+        {selectedDate ? (
+          <MoviesPage date={selectedDate} />
+        ) : (
+          <>
+            <InfoBlock />
+            <StyledCalendar onChange={setSelectedDate} />
+          </>
+        )}
       </main>
     </div>
   );

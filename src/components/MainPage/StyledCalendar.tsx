@@ -1,5 +1,5 @@
 import React from "react";
-import Calendar from "react-calendar";
+import Calendar, { CalendarProps } from "react-calendar";
 import "./styles/calendar.css";
 import ChevronLeft from "mdi-react/ChevronLeftIcon";
 import ChevronRight from "mdi-react/ChevronRightIcon";
@@ -19,7 +19,7 @@ const monthNames = [
   "Ноябрь",
 ];
 
-export const StyledCalendar = () => {
+export const StyledCalendar = (props: CalendarProps) => {
   return (
     <Calendar
       next2Label={null}
@@ -27,6 +27,7 @@ export const StyledCalendar = () => {
       navigationLabel={({ date }) => monthNames[date.getMonth()]}
       nextLabel={<ChevronRight />}
       prevLabel={<ChevronLeft />}
+      {...props}
     />
   );
 };

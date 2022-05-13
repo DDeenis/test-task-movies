@@ -14,5 +14,16 @@ body {
 }
 
 .bg-main {
-  background-color: var(--color-primary);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bg-main::before {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: url("https://image.shutterstock.com/image-vector/cartoon-cute-hand-drawn-cinema-600w-482053549.jpg");
+  opacity: 0.1;
 }

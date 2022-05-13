@@ -1,0 +1,7 @@
+.header-bg {
+  background-color: hsla(0, 0%, 95%, 0.6);
+}
+
+.header-back svg {
+  fill: #e10246;
+}
