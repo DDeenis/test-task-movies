@@ -6,7 +6,12 @@ import { MoviesPage } from "./components/Movies/MoviesPage";
 
 function App() {
   const [selectedDate, setSelectedDate] = useState<Date>();
+  const [lastSelectedDate, setLastSelectedDate] = useState<Date>();
 
+  const onPickDate = (date: Date) => {
+    setSelectedDate(date);
+    setLastSelectedDate(date);
+  };
   const onBack = () => setSelectedDate(undefined);
 
   return (
@@ -18,7 +23,7 @@ function App() {
         ) : (
           <>
             <InfoBlock />
-            <StyledCalendar onChange={setSelectedDate} />
+            <StyledCalendar onChange={onPickDate} value={lastSelectedDate} />
           </>
         )}
       </main>

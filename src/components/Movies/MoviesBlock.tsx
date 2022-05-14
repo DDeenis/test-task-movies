@@ -4,6 +4,7 @@ import { MovieEntry } from "./MovieEntry";
 import ChevronUp from "mdi-react/ChevronUpIcon";
 import ChevronDown from "mdi-react/ChevronDownIcon";
 import "./styles.css";
+import { formatMoviesBlockTitle } from "../../helpers/dates";
 
 type Props = {
   date: Date;
@@ -20,12 +21,12 @@ export const MoviesBlock = ({ movies, date }: Props) => {
   return (
     <section className="pb-4">
       <div className="py-3 text-center">
-        <span className="font-medium">{date.toDateString()}</span>
+        <span className="font-medium">{formatMoviesBlockTitle(date)}</span>
       </div>
       <hr />
       <div className="flex flex-col gap-6 mt-4 px-6">
         {slicesMovies.map((m) => (
-          <MovieEntry movie={m} />
+          <MovieEntry movie={m} key={m.id} />
         ))}
         {movies.length > 2 && (
           <button

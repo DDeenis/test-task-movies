@@ -31,7 +31,7 @@ export interface Movie {
     name: string;
     premiered: string;
     ended: string;
-    image: {
+    image?: {
       medium: string;
       original: string;
     };
